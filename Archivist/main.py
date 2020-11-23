@@ -602,7 +602,11 @@ class RequestDetails(QWidget):
 
     def printR(self):
         self.data['receiveTime'] = time.strftime('%Y-%m-%d %H:%M:%S')
-        file = open(os.path.join(path, "checkout.html"), "w")
+        try:
+            file = open(os.path.join(os.path.expanduser('~\\Documents\\Archivist'), "checkout.html"), "w")
+        except:
+            os.mkdir(os.path.expanduser('~\\Documents\\Archivist'))
+            file = open(os.path.join(os.path.expanduser('~\\Documents\\Archivist'), "checkout.html"), "w")
         booksStr = ""
         books = self.data['books'].split(';')
 
@@ -640,11 +644,15 @@ class RequestDetails(QWidget):
         message = QMessageBox()
         res = message.question(self, '', "Напечатать заявку?", message.Yes | message.No)
         if res == message.Yes:
-            os.system(f'RUNDLL32.EXE MSHTML.DLL,PrintHTML "{os.path.join(path, "checkout.html")}"')
+            os.system('RUNDLL32.EXE MSHTML.DLL,PrintHTML "' + os.path.join(os.path.expanduser("~\\Documents\\Archivist"), "checkout.html") + '"')
 
     def accept(self):
         self.data['receiveTime'] = time.strftime('%Y-%m-%d %H:%M:%S')
-        file = open(os.path.join(path, "checkout.html"), "w")
+        try:
+            file = open(os.path.join(os.path.expanduser('~\\Documents\\Archivist'), "checkout.html"), "w")
+        except:
+            os.mkdir(os.path.expanduser('~\\Documents\\Archivist'))
+            file = open(os.path.join(os.path.expanduser('~\\Documents\\Archivist'), "checkout.html"), "w")
         booksStr = ""
         books = self.data['books'].split(';')
 
@@ -704,7 +712,7 @@ class RequestDetails(QWidget):
         message = QMessageBox()
         res = message.question(self, '', "Напечатать заявку?", message.Yes | message.No)
         if res == message.Yes:
-            os.system(f'RUNDLL32.EXE MSHTML.DLL,PrintHTML "{os.path.join(path, "checkout.html")}"')
+            os.system('RUNDLL32.EXE MSHTML.DLL,PrintHTML "' + os.path.join(os.path.expanduser("~\\Documents\\Archivist"), "checkout.html") + '"')
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("Операция выполнена!")
