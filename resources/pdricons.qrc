@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>Archivist/icon.ico</file>
+    <file>icons/Рисунок13.png</file>
+    <file>icons/Рисунок14.png</file>
+    <file>icons/Рисунок15.png</file>
+    <file>icons/Рисунок16.png</file>
+  </qresource>
+</RCC>
